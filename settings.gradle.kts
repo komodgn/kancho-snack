@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "snack"
 include(":app")
- 
+include(":build-logic")
