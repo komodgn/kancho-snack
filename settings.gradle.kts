@@ -1,3 +1,5 @@
+rootProject.name = "snack"
+
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -22,5 +24,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "snack"
 include(":app")
+
+include(":core:designsystem")
