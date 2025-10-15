@@ -46,3 +46,29 @@
   - [템플릿 변경] (화살표 아이콘): 템플릿 선택 패널을 열거나 닫습니다.
   - [갤러리] (갤러리 아이콘): 현재 이미지를 갤러리에 저장합니다.
   - [공유하기] (공유 아이콘): SNS 공유 화면을 띄웁니다.
+
+## ⚒️ Tech Stack
+### Language
+- Kotlin
+
+### Libraries
+- AndroidX
+  - Activity Compose
+  - CameraX
+  - Core
+  - DataStore
+  - Splash
+
+- Compose
+  - Material3
+
+- Kotlin Libraries (Coroutine, Serialization)
+
+- Circuit
+- Dagger Hilt
+- Retrofit, OkHttp3
+- Google Cloud Vision
+- Firebase(Analytics, Remote Config)
+
+### Gradle Dependency
+- Gradle Version Catalog
