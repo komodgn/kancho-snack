@@ -13,16 +13,16 @@ internal class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.run {
-                apply(Plugins.ANDROID_APPLICATION)
+                apply(Plugins.ANDROID_LIBRARY)
                 apply(Plugins.KOTLIN_ANDROID)
             }
 
             extensions.configure<LibraryExtension> {
+                configureKotlinAndroid(this)
+
                 defaultConfig.apply {
                     targetSdk = libs.versions.targetSdk.get().toInt()
                 }
-
-                configureKotlinAndroid(this)
 
                 configureBuildTypes(
                     commonExtension = this,

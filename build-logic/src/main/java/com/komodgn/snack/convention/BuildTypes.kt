@@ -23,7 +23,7 @@ internal fun Project.configureBuildTypes(
                 buildTypes {
                     debug { configureDebugBuildType() }
                     create("staging") { configureStagingBuildType() }
-                    release { configureReleaseBuildType(commonExtension) }
+                    release { configureReleaseBuildType(commonExtension, extensionType) }
                 }
             }
         }
@@ -33,7 +33,7 @@ internal fun Project.configureBuildTypes(
                 buildTypes {
                     debug { configureDebugBuildType() }
                     create("staging") { configureStagingBuildType() }
-                    release { configureReleaseBuildType(commonExtension) }
+                    release { configureReleaseBuildType(commonExtension, extensionType) }
                 }
             }
         }
@@ -50,11 +50,16 @@ private fun BuildType.configureStagingBuildType() {
 
 private fun BuildType.configureReleaseBuildType(
     commonExtension: CommonExtension<*, *, *, *, *, *>,
+    extensionType: ExtensionType
 ) {
     buildConfigField("String", "BASE_URL", "\"RELEASE_API_URL\"")
 
     isMinifyEnabled = true
-    isShrinkResources = true
+
+    if (extensionType == ExtensionType.APPLICATION) {
+        isShrinkResources = true
+    }
+
     proguardFiles(
         commonExtension.getDefaultProguardFile("proguard-android-optimize.txt"),
         "proguard-rules.pro"
