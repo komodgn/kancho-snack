@@ -52,3 +52,4 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 
 # Convention Plugin
 snack-android-application = { id = "snack.android.application", version = "unspecified" }
+snack-android-library = { id = "snack.android.library", version = "unspecified" }

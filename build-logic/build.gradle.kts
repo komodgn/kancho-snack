@@ -11,6 +11,7 @@ dependencies {
 gradlePlugin {
     val conventionPluginClasses = listOf(
         "android.application" to "AndroidApplicationConventionPlugin",
+        "android.library" to "AndroidLibraryConventionPlugin",
     )
 
     plugins {
