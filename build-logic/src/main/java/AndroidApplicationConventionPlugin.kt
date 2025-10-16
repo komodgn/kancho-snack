@@ -18,10 +18,10 @@ internal class AndroidApplicationConventionPlugin : Plugin<Project> {
 
             extensions.configure<ApplicationExtension> {
                 defaultConfig {
-                    applicationId = libs.versions.applicationId.toString()
+                    applicationId = libs.versions.applicationId.get()
                     targetSdk = libs.versions.targetSdk.get().toInt()
                     versionCode = libs.versions.versionCode.get().toInt()
-                    versionName = libs.versions.versionName.toString()
+                    versionName = libs.versions.versionName.get()
                 }
 
                 configureKotlinAndroid(this)
