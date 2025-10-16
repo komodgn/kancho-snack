@@ -1,4 +1,11 @@
 [versions]
+applicationId = "com.komodgn.snack"
+compileSdk = "36"
+targetSdk = "36"
+minSdk = "24"
+versionCode = "1"
+versionName = "1.0.0"
+
 agp = "8.13.0"
 
 ## Android gradle plugin
@@ -43,3 +50,5 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 
+# Convention Plugin
+snack-android-application = { id = "snack.android.application", version = "unspecified" }
