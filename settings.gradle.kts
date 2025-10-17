@@ -16,6 +16,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -27,3 +28,6 @@ dependencyResolutionManagement {
 include(":app")
 
 include(":core:designsystem")
+
+include(":feature:home")
+include(":feature:shop")
