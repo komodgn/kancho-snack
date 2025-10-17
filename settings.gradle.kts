@@ -28,6 +28,7 @@ dependencyResolutionManagement {
 include(":app")
 
 include(":core:designsystem")
+include(":core:ui")
 
 include(":feature:home")
 include(":feature:shop")

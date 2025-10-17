@@ -9,7 +9,8 @@ android {
 
 dependencies {
     implementation(projects.core.designsystem)
-    
+    implementation(projects.core.ui)
+
     implementation(projects.feature.home)
     implementation(projects.feature.shop)
 
