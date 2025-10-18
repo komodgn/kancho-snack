@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.komodgn.snack.core.ui.R
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.komodgn.snack.core.designsystem.theme.Neutral200
+import com.komodgn.snack.core.designsystem.theme.Neutral900
 
 /**
  * 레트로 게임기 본체 프레임 컴포넌트입니다.
@@ -64,13 +64,13 @@ fun RetroDeviceFrame(
             Box(
                 modifier = Modifier.Companion.constrainAs(screenRef) {
                     top.linkTo(topRef.bottom, margin = 20.dp)
-                    bottom.linkTo(buttonsRef.top, margin = 15.dp)
-                    start.linkTo(parent.start, margin = 90.dp)
-                    end.linkTo(parent.end, margin = 90.dp)
+                    bottom.linkTo(parent.bottom, margin = 160.dp)
+                    start.linkTo(parent.start, margin = 88.dp)
+                    end.linkTo(parent.end, margin = 88.dp)
                     width = Dimension.fillToConstraints
                     height = Dimension.fillToConstraints
                 }
-                    .background(Neutral200)
+                    .background(Neutral900)
             ) {
                 screenContent()
             }

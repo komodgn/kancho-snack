@@ -1,0 +1,43 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="68"
+    android:viewportHeight="73">
+    <path
+        android:pathData="M-17,-16L83,-16L83,84L-17,84L-17,-16ZM27,5L14,12L10,16L4,29Q3,39 5,47L13,60L29,67L38,67L53,60L59,52L62,43L62,29L56,16Q51,9 43,6Q37,3 27,5Z"
+        android:strokeAlpha="0"
+        android:strokeWidth="1"
+        android:fillColor="#000000"
+        android:strokeColor="#000000"
+        android:fillAlpha="0"/>
+    <path
+        android:pathData="M4,34L7,35.5L7,39.5L10,46L13,47.5L19.5,56L25.5,60L34.5,61Q35.8,58.7 40.5,60L48,54.5L54.5,46Q56.8,46.8 56,44.5L60.5,34Q63.9,33.1 62,38.5L57,53Q54.3,51.9 55,54.5L43.5,64L40.5,65L25.5,65Q16.2,61.8 11,54.5L9,51.5L7,49.5L4,34Z"
+        android:strokeWidth="1"
+        android:fillColor="#A05C81"
+        android:strokeColor="#A05C81"/>
+    <path
+        android:pathData="M28.5,6L33.5,7L37.5,6L45.5,9L55,17.5L59,24.5L61,33.5L59,35.5L59,39.5L56,46L53,47.5L46.5,56L40.5,60L31.5,61Q30.3,58.7 25.5,60L18,54.5L11.5,46Q9.3,46.8 10,44.5L7,39.5L7,35.5Q4.3,34.7 5,30.5L11,17.5L16.5,12L28.5,6Z"
+        android:strokeWidth="1"
+        android:fillColor="#F290C5"
+        android:strokeColor="#A05C81"/>
+    <path
+        android:pathData="M26.5,5Q36.6,3.4 42.5,6Q50.8,9.2 56,15.5L61,25.5L62,33.5L61,33.5L59,24.5L55,17.5L49.5,12L45.5,9L34.5,6L32.5,7L28.5,6L20.5,9L11,17.5L7,24.5L4.5,34L4,28.5L10,15.5L13.5,12L26.5,5Z"
+        android:strokeWidth="1"
+        android:fillColor="#040404"
+        android:strokeColor="#040404"/>
+    <path
+        android:pathData="M4.5,39L7,48.5L6,48.5L4,42.5L4.5,39Z"
+        android:strokeWidth="1"
+        android:fillColor="#040404"
+        android:strokeColor="#040404"/>
+    <path
+        android:pathData="M61.5,39L62,42.5L59.5,49L59,45.5L61.5,39Z"
+        android:strokeWidth="1"
+        android:fillColor="#040404"
+        android:strokeColor="#040404"/>
+    <path
+        android:pathData="M7.5,50L9,53Q11.7,51.9 11,54.5L22.5,64L25.5,65L40.5,65Q49.8,61.8 55,54.5L57,51.5L59,50.5L53,60L37.5,67L28.5,67L13,60L7,51.5L7.5,50Z"
+        android:strokeWidth="1"
+        android:fillColor="#040404"
+        android:strokeColor="#040404"/>
+</vector>
