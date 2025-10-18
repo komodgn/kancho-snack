@@ -32,3 +32,4 @@ include(":core:ui")
 
 include(":feature:home")
 include(":feature:shop")
+include(":feature:main")
