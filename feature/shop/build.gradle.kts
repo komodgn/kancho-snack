@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.snack.android.library)
+    alias(libs.plugins.snack.android.feature)
 }
 
 android {
