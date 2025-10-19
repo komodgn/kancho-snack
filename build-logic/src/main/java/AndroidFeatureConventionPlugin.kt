@@ -10,6 +10,7 @@ internal class AndroidFeatureConventionPlugin : Plugin<Project> {
             pluginManager.run {
                 apply("snack.android.library")
                 apply("snack.android.library.compose")
+                apply("snack.android.hilt")
             }
 
             dependencies {

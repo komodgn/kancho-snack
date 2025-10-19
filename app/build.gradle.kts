@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.snack.android.application)
     alias(libs.plugins.snack.android.application.compose)
+    alias(libs.plugins.snack.android.hilt)
 }
 
 android {

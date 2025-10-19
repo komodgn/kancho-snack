@@ -6,4 +6,7 @@ object Plugins {
 
     const val KOTLIN_ANDROID = "org.jetbrains.kotlin.android"
     const val KOTLIN_COMPOSE = "org.jetbrains.kotlin.plugin.compose"
+
+    const val KSP = "com.google.devtools.ksp"
+    const val HILT = "dagger.hilt.android.plugin"
 }
