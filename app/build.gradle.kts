@@ -14,6 +14,7 @@ dependencies {
 
     implementation(projects.feature.main)
     implementation(projects.feature.home)
+    implementation(projects.feature.shoot)
     implementation(projects.feature.shop)
 
     implementation(libs.androidx.core.ktx)
