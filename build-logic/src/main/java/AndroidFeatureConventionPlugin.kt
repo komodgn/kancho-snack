@@ -1,5 +1,8 @@
+import com.komodgn.snack.convention.api
 import com.komodgn.snack.convention.implementation
 import com.komodgn.snack.convention.implementationProject
+import com.komodgn.snack.convention.ksp
+import com.komodgn.snack.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
@@ -16,6 +19,11 @@ internal class AndroidFeatureConventionPlugin : Plugin<Project> {
             dependencies {
                 implementationProject(":core:designsystem")
                 implementationProject(":core:ui")
+                implementationProject(":feature:screens")
+
+                implementation(libs.bundles.circuit)
+                api(libs.circuit.codegen.annotation)
+                ksp(libs.circuit.codegen.ksp)
             }
         }
     }
