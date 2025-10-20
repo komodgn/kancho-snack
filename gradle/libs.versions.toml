@@ -113,3 +113,4 @@ snack-android-application-compose = { id = "snack.android.application.compose", 
 snack-android-library-compose = { id = "snack.android.library.compose", version = "unspecified" }
 snack-android-feature = { id = "snack.android.feature", version = "unspecified" }
 snack-android-hilt = { id = "snack.android.hilt", version = "unspecified" }
+snack-jvm-library = { id = "snack.jvm.library", version = "unspecified" }

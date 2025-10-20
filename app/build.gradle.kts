@@ -15,6 +15,7 @@ ksp {
 dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.core.ui)
+    implementation(projects.core.model)
 
     implementation(projects.feature.main)
     implementation(projects.feature.screens)
