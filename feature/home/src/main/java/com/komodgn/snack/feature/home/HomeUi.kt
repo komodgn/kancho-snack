@@ -29,7 +29,7 @@ internal fun HomeUi(
     state: HomeUiState
 ) {
     SnackScaffold(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
     ) { innerPadding ->
         Column {
