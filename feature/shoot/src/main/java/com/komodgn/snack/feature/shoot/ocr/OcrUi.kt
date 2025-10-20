@@ -1,37 +1,26 @@
 package com.komodgn.snack.feature.shoot.ocr
 
-import android.content.Intent
-import android.net.Uri
-import android.provider.Settings
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.camera.view.LifecycleCameraController
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import com.komodgn.snack.core.designsystem.DevicePreview
 import com.komodgn.snack.core.designsystem.component.button.SnackButton
 import com.komodgn.snack.core.designsystem.component.button.mediumRetroButtonSize
-import com.komodgn.snack.core.designsystem.component.button.smallRetroButtonSize
 import com.komodgn.snack.core.designsystem.theme.SnackTheme
 import com.komodgn.snack.core.ui.SnackScaffold
 import com.komodgn.snack.core.ui.component.RetroDeviceFrame
-import com.komodgn.snack.core.ui.component.SnackDialog
 import com.komodgn.snack.feature.screens.OcrScreen
-import com.slack.circuit.codegen.annotations.CircuitInject
-import dagger.hilt.android.components.ActivityRetainedComponent
 import com.komodgn.snack.feature.shoot.R
 import com.komodgn.snack.feature.shoot.ocr.component.CameraPreview
 import com.komodgn.snack.feature.shoot.ocr.component.OcrHeader
+import com.slack.circuit.codegen.annotations.CircuitInject
+import dagger.hilt.android.components.ActivityRetainedComponent
 
 @CircuitInject(OcrScreen::class, ActivityRetainedComponent::class)
 @Composable
@@ -85,5 +74,18 @@ fun OcrUi(
                 }
             )
         }
+    }
+}
+
+@DevicePreview
+@Composable
+private fun OcrUiPreview() {
+    SnackTheme {
+        OcrUi(
+            state = OcrUiState(
+                isCameraPermissionDialogVisible = false,
+                eventSink = {}
+            )
+        )
     }
 }

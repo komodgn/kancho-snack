@@ -29,4 +29,7 @@ replay_pid*
 .gradle
 .idea
 local.properties
+keystore.properties
 *.html
+
+google-services.json
