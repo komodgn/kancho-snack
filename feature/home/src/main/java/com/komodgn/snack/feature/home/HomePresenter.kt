@@ -19,7 +19,7 @@ class HomePresenter @AssistedInject constructor(
     override fun present(): HomeUiState {
         fun handleEvent(event: HomeUiEvent) {
             when (event) {
-                is HomeUiEvent.OnPowerButtonClick -> {
+                is HomeUiEvent.OnPowerOnButtonClick -> {
                     navigator.goTo(OcrScreen)
                 }
             }

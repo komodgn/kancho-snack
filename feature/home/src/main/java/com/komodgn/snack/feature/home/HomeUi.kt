@@ -62,7 +62,7 @@ internal fun HomeUi(
                         )
                         SnackButton(
                             onClick = {
-                                state.eventSink(HomeUiEvent.OnPowerButtonClick)
+                                state.eventSink(HomeUiEvent.OnPowerOnButtonClick)
                             },
                             size = mediumRetroButtonSize,
                             backgroundDrawableRes = com.komodgn.snack.core.designsystem.R.drawable.ic_mint_button,
