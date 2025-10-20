@@ -29,7 +29,7 @@ fun SnackDialog(
     confirmText: String? = null,
     dismissText: String? = null,
     onConfirmClick: () -> Unit,
-    onDismissClick: () -> Unit
+    onDismissClick: () -> Unit = {}
 ) {
     Dialog(
         onDismissRequest = {

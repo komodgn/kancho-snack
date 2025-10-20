@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_dialog_title">Camera Permission Required</string>
+    <string name="permission_dialog_description">Please allow permission in Settings to collect Kancho.</string>
+    <string name="permission_dialog_move_to_settings">OK</string>
+</resources>

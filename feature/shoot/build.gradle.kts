@@ -6,6 +6,10 @@ android {
     namespace = "com.komodgn.snack.feature.shoot"
 }
 
+ksp {
+    arg("circuit.codegen.mode", "hilt")
+}
+
 dependencies {
     implementation(libs.androidx.camera.core)
     implementation(libs.androidx.camera.view)
