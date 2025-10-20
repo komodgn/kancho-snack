@@ -28,6 +28,9 @@ val Yellow900 = Color(0xFFFF6D00)
 val ContentOnDark = Color(0xFFFFFFFF)
 val ContentOnLight = Color(0xFF000000)
 
+val White = Color(0xFFFFFFFF)
+val Black = Color(0xFF000000)
+
 val RetroPurple = Color(0xFF906BE3)
 val RetroMint = Color(0xFF4BCA8B)
 val RetroPink = Color(0xFFE64B95)
