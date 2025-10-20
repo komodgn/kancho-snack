@@ -104,7 +104,7 @@ fun SnackButton(
 @Composable
 private fun SnackButtonPreview() {
     SnackTheme {
-        val shootIcon = painterResource(R.drawable.baseline_photo_camera_24)
+        val shootIcon = painterResource(R.drawable.ic_photo_camera)
         val dummyBackground = R.drawable.ic_mint_button
 
         Box(
