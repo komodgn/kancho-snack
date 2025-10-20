@@ -25,7 +25,8 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 @CircuitInject(HomeScreen::class, ActivityRetainedComponent::class)
 @Composable
 internal fun HomeUi(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    state: HomeUiState
 ) {
     SnackScaffold(
         modifier = Modifier
@@ -60,7 +61,9 @@ internal fun HomeUi(
                             backgroundDrawableRes = com.komodgn.snack.core.designsystem.R.drawable.ic_mint_button,
                         )
                         SnackButton(
-                            onClick = { },
+                            onClick = {
+                                state.eventSink(HomeUiEvent.OnPowerButtonClick)
+                            },
                             size = mediumRetroButtonSize,
                             backgroundDrawableRes = com.komodgn.snack.core.designsystem.R.drawable.ic_mint_button,
                             icon = painterResource(R.drawable.ic_power_setting),
@@ -82,6 +85,10 @@ internal fun HomeUi(
 @Composable
 fun HomeUiPreview() {
     SnackTheme {
-        HomeUi()
+        HomeUi(
+            state = HomeUiState(
+                eventSink = {}
+            )
+        )
     }
 }
