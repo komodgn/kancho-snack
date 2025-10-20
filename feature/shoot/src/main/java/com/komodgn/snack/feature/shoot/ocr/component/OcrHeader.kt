@@ -33,7 +33,7 @@ fun OcrHeader(
     ) {
         Spacer(modifier = Modifier.width(SnackTheme.spacing.spacing4))
         IconButton(
-            onClick = {onBackButtonClick}
+            onClick = { onBackButtonClick() }
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_arrow_back),
