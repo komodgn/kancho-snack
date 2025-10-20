@@ -8,3 +8,8 @@ data object HomeScreen: Screen
 
 @Parcelize
 data object OcrScreen: Screen
+
+@Parcelize
+data class WebViewScreen(
+    val url: String
+): Screen

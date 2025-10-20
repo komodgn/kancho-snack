@@ -18,6 +18,7 @@ dependencies {
     implementation(projects.core.model)
 
     implementation(projects.feature.main)
+    implementation(projects.feature.webview)
     implementation(projects.feature.screens)
     implementation(projects.feature.home)
     implementation(projects.feature.shoot)
