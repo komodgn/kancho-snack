@@ -6,3 +6,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data object HomeScreen: Screen
 
+@Parcelize
+data object OcrScreen: Screen
