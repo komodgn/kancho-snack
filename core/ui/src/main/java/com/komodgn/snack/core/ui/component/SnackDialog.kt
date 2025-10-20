@@ -72,7 +72,7 @@ fun SnackDialog(
                     SnackButton(
                         modifier = Modifier.weight(1f),
                         text = text,
-                        onClick = { onDismissClick },
+                        onClick = { onDismissClick() },
                         size = smallRetroButtonSize,
                         backgroundDrawableRes = R.drawable.ic_pink_button
                     )
@@ -82,7 +82,7 @@ fun SnackDialog(
                     SnackButton(
                         modifier = Modifier.weight(1f),
                         text = text,
-                        onClick = { onConfirmClick },
+                        onClick = { onConfirmClick() },
                         size = smallRetroButtonSize,
                         backgroundDrawableRes = R.drawable.ic_mint_button
                     )
