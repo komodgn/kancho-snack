@@ -28,7 +28,7 @@ fun OcrHeader(
         modifier = modifier
             .fillMaxWidth()
             .background(Black)
-            .height(50.dp),
+            .height(60.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Spacer(modifier = Modifier.width(SnackTheme.spacing.spacing4))

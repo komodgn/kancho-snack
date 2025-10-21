@@ -31,7 +31,7 @@ fun HomeHeader(
         modifier = modifier
             .fillMaxWidth()
             .background(ContentOnLight)
-            .height(50.dp),
+            .height(60.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Spacer(modifier = Modifier.width(SnackTheme.spacing.spacing4))
