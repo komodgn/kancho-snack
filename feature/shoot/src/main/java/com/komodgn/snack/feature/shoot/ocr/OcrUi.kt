@@ -12,9 +12,11 @@ import androidx.compose.ui.res.painterResource
 import com.komodgn.snack.core.designsystem.DevicePreview
 import com.komodgn.snack.core.designsystem.component.button.SnackButton
 import com.komodgn.snack.core.designsystem.component.button.mediumRetroButtonSize
+import com.komodgn.snack.core.designsystem.theme.ContentOnDark
 import com.komodgn.snack.core.designsystem.theme.SnackTheme
 import com.komodgn.snack.core.ui.SnackScaffold
 import com.komodgn.snack.core.ui.component.RetroDeviceFrame
+import com.komodgn.snack.core.ui.component.SnackLoadingIndicator
 import com.komodgn.snack.feature.screens.OcrScreen
 import com.komodgn.snack.feature.shoot.R
 import com.komodgn.snack.feature.shoot.ocr.component.CameraPreview
@@ -59,9 +61,12 @@ fun OcrUi(
                             backgroundDrawableRes = com.komodgn.snack.core.designsystem.R.drawable.ic_mint_button,
                         )
                         SnackButton(
-                            onClick = { /* Ocr Start */ },
+                            onClick = {
+                                state.eventSink(OcrUiEvent.OnCameraCaptureStart)
+                            },
+                            enabled = !state.isLoading,
                             size = mediumRetroButtonSize,
-                            backgroundDrawableRes = com.komodgn.snack.core.designsystem.R.drawable.ic_mint_button,
+                            backgroundDrawableRes = com.komodgn.snack.core.designsystem.R.drawable.ic_pink_button,
                             icon = painterResource(R.drawable.ic_camera),
                             text = "SHOOT",
                         )
@@ -73,6 +78,16 @@ fun OcrUi(
                     }
                 }
             )
+
+            Text(
+                text = state.recognizedText.toString(),
+                style = SnackTheme.typography.heading,
+                color = ContentOnDark
+            )
+        }
+
+        if (state.isLoading) {
+            SnackLoadingIndicator()
         }
     }
 }

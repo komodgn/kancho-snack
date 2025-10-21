@@ -9,7 +9,7 @@ data class OcrResponse(
 
 @Serializable
 data class AnnotateImageResponse(
-    val textAnnotations: List<EntityAnnotation>
+    val textAnnotations: List<EntityAnnotation>? = null
 )
 
 @Serializable
@@ -22,7 +22,7 @@ data class EntityAnnotation(
 
 @Serializable
 data class BoundingPoly(
-    val vertices: Vertex
+    val vertices: List<Vertex>
 )
 
 @Serializable

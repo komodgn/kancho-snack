@@ -1,5 +1,6 @@
 package com.komodgn.snack.feature.shoot.ocr.component
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -8,11 +9,12 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCaptureException
 import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -24,6 +26,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -31,6 +34,7 @@ import com.komodgn.snack.core.ui.component.SnackDialog
 import com.komodgn.snack.feature.shoot.ocr.OcrUiState
 import com.komodgn.snack.feature.shoot.R
 import com.komodgn.snack.feature.shoot.ocr.OcrUiEvent
+import java.io.File
 
 @Composable
 fun CameraPreview(
@@ -91,6 +95,22 @@ fun CameraPreview(
         onDispose { cameraController.unbind() }
     }
 
+    LaunchedEffect(state.isCapturePending) {
+        if (state.isCapturePending) {
+            performCameraCapture(
+                context = context,
+                cameraController = cameraController,
+                onImageCaptured = { uri ->
+                    state.eventSink(OcrUiEvent.OnImageCaptured(uri))
+                },
+                onError = { err ->
+                    
+                }
+            )
+            state.eventSink(OcrUiEvent.OnCaptureCommandCompleted)
+        }
+    }
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -127,4 +147,29 @@ fun CameraPreview(
             }
         )
     }
+}
+
+private fun performCameraCapture(
+    context: Context,
+    cameraController: LifecycleCameraController,
+    onImageCaptured: (Uri) -> Unit,
+    onError: (ImageCaptureException) -> Unit
+) {
+    val executor = ContextCompat.getMainExecutor(context)
+    val photoFile = File.createTempFile("ocr_snack_", ".jpg", context.cacheDir)
+    val output = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+
+    cameraController.takePicture(
+        output,
+        executor,
+        object : ImageCapture.OnImageSavedCallback {
+            override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                onImageCaptured(photoFile.toUri())
+            }
+
+            override fun onError(exception: ImageCaptureException) {
+                onError(exception)
+            }
+        },
+    )
 }
