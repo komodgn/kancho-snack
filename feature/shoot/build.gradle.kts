@@ -11,6 +11,8 @@ ksp {
 }
 
 dependencies {
+    implementation(projects.snack.core.ocr)
+
     implementation(libs.androidx.camera.core)
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.camera2)

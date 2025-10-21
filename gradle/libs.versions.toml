@@ -22,6 +22,11 @@ ksp = "2.2.20-2.0.3"
 
 ## Kotlin
 kotlin = "2.2.20"
+kotlinxSerializationJson = "1.9.0"
+
+## Network
+okhttp = "5.1.0"
+retrofit = "3.0.0"
 
 coreKtx = "1.17.0"
 junit = "4.13.2"
@@ -55,6 +60,12 @@ androidx-camera-core = { group = "androidx.camera", name = "camera-core", versio
 androidx-camera-camera2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "androidxCamera" }
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "androidxCamera" }
 androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "androidxCamera" }
+
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-kotlinx-serialization-converter = { module = "com.squareup.retrofit2:converter-kotlinx-serialization", version.ref = "retrofit" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
@@ -101,6 +112,7 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
@@ -114,3 +126,5 @@ snack-android-library-compose = { id = "snack.android.library.compose", version 
 snack-android-feature = { id = "snack.android.feature", version = "unspecified" }
 snack-android-hilt = { id = "snack.android.hilt", version = "unspecified" }
 snack-jvm-library = { id = "snack.jvm.library", version = "unspecified" }
+snack-kotlin-library-serialization = { id = "snack.kotlin.library.serialization", version = "unspecified" }
+snack-android-retrofit = { id = "snack.android.retrofit", version = "unspecified" }
