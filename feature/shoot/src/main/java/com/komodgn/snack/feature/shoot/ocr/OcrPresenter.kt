@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import com.komodgn.snack.core.ocr.service.OcrService
 import com.komodgn.snack.feature.screens.OcrScreen
 import com.slack.circuit.codegen.annotations.CircuitInject
 import com.slack.circuit.retained.rememberRetained
@@ -15,7 +16,8 @@ import dagger.assisted.AssistedInject
 import dagger.hilt.android.components.ActivityRetainedComponent
 
 class OcrPresenter @AssistedInject constructor(
-    @Assisted private val navigator: Navigator
+    @Assisted private val navigator: Navigator,
+    private val ocrService: OcrService
 ) : Presenter<OcrUiState> {
 
     @Composable
