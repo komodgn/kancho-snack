@@ -14,7 +14,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SnackLoadingIndicator(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     delayMills: Long = 1000L
 ) {
     val showLoadingIcon by produceState(initialValue = false, key1 = delayMills) {
@@ -35,7 +35,7 @@ fun SnackLoadingIndicator(
 
 @ComponentPreview
 @Composable
-private fun SnackLoadingIndicator() {
+private fun SnackLoadingIndicatorPreview() {
     SnackTheme {
         SnackLoadingIndicator()
     }

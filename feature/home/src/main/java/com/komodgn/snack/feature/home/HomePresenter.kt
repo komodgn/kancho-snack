@@ -1,8 +1,10 @@
 package com.komodgn.snack.feature.home
 
 import androidx.compose.runtime.Composable
+import com.komodgn.snack.core.common.constants.WebViewUrls
 import com.komodgn.snack.feature.screens.HomeScreen
 import com.komodgn.snack.feature.screens.OcrScreen
+import com.komodgn.snack.feature.screens.WebViewScreen
 import com.slack.circuit.codegen.annotations.CircuitInject
 import com.slack.circuit.runtime.Navigator
 import com.slack.circuit.runtime.presenter.Presenter
@@ -21,6 +23,11 @@ class HomePresenter @AssistedInject constructor(
             when (event) {
                 is HomeUiEvent.OnPowerOnButtonClick -> {
                     navigator.goTo(OcrScreen)
+                }
+
+                is HomeUiEvent.OnPrivacyPolicyButtonClick -> {
+                    val webView = WebViewUrls.PRIVACY_POLICY
+                    navigator.goTo(WebViewScreen(webView.url))
                 }
             }
         }

@@ -17,6 +17,7 @@ import com.komodgn.snack.core.designsystem.theme.Neutral200
 import com.komodgn.snack.core.designsystem.theme.SnackTheme
 import com.komodgn.snack.core.ui.SnackScaffold
 import com.komodgn.snack.core.ui.component.RetroDeviceFrame
+import com.komodgn.snack.core.ui.component.SnackLoadingIndicator
 import com.komodgn.snack.feature.home.component.HomeHeader
 import com.komodgn.snack.feature.screens.HomeScreen
 import com.slack.circuit.codegen.annotations.CircuitInject
@@ -35,7 +36,8 @@ internal fun HomeUi(
         Column {
             HomeHeader(
                 modifier = Modifier
-                    .padding(innerPadding)
+                    .padding(innerPadding),
+                state = state
             )
             RetroDeviceFrame(
                 topAreaContent = {
@@ -77,6 +79,10 @@ internal fun HomeUi(
                     }
                 }
             )
+        }
+
+        if (state.isLoading) {
+            SnackLoadingIndicator()
         }
     }
 }
