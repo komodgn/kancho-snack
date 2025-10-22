@@ -23,6 +23,9 @@ ksp = "2.2.20-2.0.3"
 ## Kotlin
 kotlin = "2.2.20"
 kotlinxSerializationJson = "1.9.0"
+kotlinDetekt = "1.23.8"
+kotlinKtlintGradle = "11.6.1"
+kotlinKtlintSource = "0.50.0"
 
 ## Network
 okhttp = "5.1.0"
@@ -121,6 +124,9 @@ jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrai
 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+kotlin-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "kotlinDetekt" }
+kotlin-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "kotlinKtlintGradle" }
 
 # Convention Plugin
 snack-android-application = { id = "snack.android.application", version = "unspecified" }
