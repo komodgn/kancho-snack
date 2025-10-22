@@ -1,7 +1,6 @@
 package com.komodgn.snack.core.ui.component
 
 import androidx.compose.foundation.background
-import com.komodgn.snack.core.designsystem.R
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.Dialog
 import com.komodgn.snack.core.designsystem.ComponentPreview
+import com.komodgn.snack.core.designsystem.R
 import com.komodgn.snack.core.designsystem.component.button.SnackButton
 import com.komodgn.snack.core.designsystem.component.button.smallRetroButtonSize
 import com.komodgn.snack.core.designsystem.theme.SnackTheme
@@ -29,44 +29,46 @@ fun SnackDialog(
     confirmText: String? = null,
     dismissText: String? = null,
     onConfirmClick: () -> Unit,
-    onDismissClick: () -> Unit = {}
+    onDismissClick: () -> Unit = {},
 ) {
     Dialog(
         onDismissRequest = {
             onDismissClick()
-        }
+        },
     ) {
         Column(
-            modifier = modifier.fillMaxWidth()
-                .background(White,
-                    shape = RoundedCornerShape(SnackTheme.radius.md)
-                )
-                .padding(
-                    top = SnackTheme.spacing.spacing6,
-                    start = SnackTheme.spacing.spacing4,
-                    end = SnackTheme.spacing.spacing4,
-                    bottom = SnackTheme.spacing.spacing4
+            modifier =
+                modifier
+                    .fillMaxWidth()
+                    .background(
+                        White,
+                        shape = RoundedCornerShape(SnackTheme.radius.md),
+                    ).padding(
+                        top = SnackTheme.spacing.spacing6,
+                        start = SnackTheme.spacing.spacing4,
+                        end = SnackTheme.spacing.spacing4,
+                        bottom = SnackTheme.spacing.spacing4,
                     ),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
                 text = title,
                 style = SnackTheme.typography.heading,
-                color = SnackTheme.colors.contentPrimary
+                color = SnackTheme.colors.contentPrimary,
             )
             Spacer(
-                modifier = Modifier.height(SnackTheme.spacing.spacing2)
+                modifier = Modifier.height(SnackTheme.spacing.spacing2),
             )
             Text(
                 text = description,
                 style = SnackTheme.typography.bodyLarge,
-                color = SnackTheme.colors.contentPrimary
+                color = SnackTheme.colors.contentPrimary,
             )
             Spacer(
-                modifier = Modifier.height(SnackTheme.spacing.spacing4)
+                modifier = Modifier.height(SnackTheme.spacing.spacing4),
             )
             Row(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             ) {
                 dismissText?.let { text ->
                     SnackButton(
@@ -74,7 +76,7 @@ fun SnackDialog(
                         text = text,
                         onClick = { onDismissClick() },
                         size = smallRetroButtonSize,
-                        backgroundDrawableRes = R.drawable.ic_pink_button
+                        backgroundDrawableRes = R.drawable.ic_pink_button,
                     )
                 }
                 Spacer(modifier = Modifier.width(SnackTheme.spacing.spacing4))
@@ -84,7 +86,7 @@ fun SnackDialog(
                         text = text,
                         onClick = { onConfirmClick() },
                         size = smallRetroButtonSize,
-                        backgroundDrawableRes = R.drawable.ic_mint_button
+                        backgroundDrawableRes = R.drawable.ic_mint_button,
                     )
                 }
             }
@@ -102,7 +104,7 @@ fun SnackDialogPreview() {
             onConfirmClick = {},
             onDismissClick = {},
             confirmText = "OK",
-            dismissText = "CANCLE"
+            dismissText = "CANCLE",
         )
     }
 }

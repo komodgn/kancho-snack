@@ -25,31 +25,32 @@ import com.komodgn.snack.feature.home.R
 @Composable
 fun HomeHeader(
     modifier: Modifier = Modifier,
-    state: HomeUiState
+    state: HomeUiState,
 ) {
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(ContentOnLight)
-            .height(60.dp),
-        verticalAlignment = Alignment.CenterVertically
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .background(ContentOnLight)
+                .height(60.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Spacer(modifier = Modifier.width(SnackTheme.spacing.spacing4))
         Text(
             "SNACK",
             style = SnackTheme.typography.heading,
-            color = ContentOnDark
+            color = ContentOnDark,
         )
         Spacer(modifier = Modifier.weight(1f))
         IconButton(
             onClick = {
                 state.eventSink(HomeUiEvent.OnPrivacyPolicyButtonClick)
-            }
+            },
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_info),
                 contentDescription = "Info Icon",
-                tint = ContentOnDark
+                tint = ContentOnDark,
             )
         }
         Spacer(modifier = Modifier.width(SnackTheme.spacing.spacing2))
@@ -61,9 +62,10 @@ fun HomeHeader(
 private fun HomeHeaderPreview() {
     SnackTheme {
         HomeHeader(
-            state = HomeUiState(
-                eventSink = {}
-            )
+            state =
+                HomeUiState(
+                    eventSink = {},
+                ),
         )
     }
 }

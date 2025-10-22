@@ -13,33 +13,34 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.components.ActivityRetainedComponent
 
-class HomePresenter @AssistedInject constructor(
-    @Assisted private val navigator: Navigator,
-) : Presenter<HomeUiState> {
+class HomePresenter
+    @AssistedInject
+    constructor(
+        @Assisted private val navigator: Navigator,
+    ) : Presenter<HomeUiState> {
+        @Composable
+        override fun present(): HomeUiState {
+            fun handleEvent(event: HomeUiEvent) {
+                when (event) {
+                    is HomeUiEvent.OnPowerOnButtonClick -> {
+                        navigator.goTo(OcrScreen)
+                    }
 
-    @Composable
-    override fun present(): HomeUiState {
-        fun handleEvent(event: HomeUiEvent) {
-            when (event) {
-                is HomeUiEvent.OnPowerOnButtonClick -> {
-                    navigator.goTo(OcrScreen)
-                }
-
-                is HomeUiEvent.OnPrivacyPolicyButtonClick -> {
-                    val webView = WebViewUrls.PRIVACY_POLICY
-                    navigator.goTo(WebViewScreen(webView.url))
+                    is HomeUiEvent.OnPrivacyPolicyButtonClick -> {
+                        val webView = WebViewUrls.PRIVACY_POLICY
+                        navigator.goTo(WebViewScreen(webView.url))
+                    }
                 }
             }
+
+            return HomeUiState(
+                eventSink = ::handleEvent,
+            )
         }
 
-        return HomeUiState(
-            eventSink = ::handleEvent
-        )
+        @CircuitInject(HomeScreen::class, ActivityRetainedComponent::class)
+        @AssistedFactory
+        fun interface Factory {
+            fun create(navigator: Navigator): HomePresenter
+        }
     }
-
-    @CircuitInject(HomeScreen::class, ActivityRetainedComponent::class)
-    @AssistedFactory
-    fun interface Factory {
-        fun create(navigator: Navigator): HomePresenter
-    }
-}

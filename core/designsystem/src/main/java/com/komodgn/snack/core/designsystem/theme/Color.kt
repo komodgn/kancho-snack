@@ -44,7 +44,6 @@ val RetroHighlight = Color(0xFFFFEA3C) // 노란색 하이라이트/경고
 data class SnackColorSchema(
     val basePrimary: Color = ContentOnDark,
     val baseSecondary: Color = Neutral50,
-
 //    val bgPrimary: Color = Green500,
 //    val bgPrimaryPressed: Color = Green600,
     val bgSecondary: Color = Neutral100,
@@ -52,7 +51,6 @@ data class SnackColorSchema(
 //    val bgTertiary: Color = Green100,
 //    val bgTertiaryPressed: Color = Green200,
     val bgDisabled: Color = Neutral200,
-
     val contentPrimary: Color = Neutral800,
     val contentSecondary: Color = Neutral500,
     val contentTertiary: Color = Neutral400,
@@ -63,21 +61,17 @@ data class SnackColorSchema(
     val contentInfo: Color = Yellow500,
     val contentSuccess: Color = RetroPurple,
     val contentWarning: Color = Yellow300,
-
     val borderPrimary: Color = Neutral200,
     val borderSecondary: Color = Neutral100,
     val borderBrand: Color = RetroPurple,
     val borderError: Color = RetroHighlight,
-
     val dividerSm: Color = Neutral200,
     val dividerMd: Color = Neutral100,
-
     val retroDevicePrimary: Color = RetroPurple,
     val retroButtonAccent: Color = RetroMint,
     val retroButtonSecondary: Color = RetroPink,
     val retroOuterBackground: Color = RetroLightBg,
     val retroDarkestSurface: Color = RetroDarkSurface,
-
     val retroScreenBackground: Color = RetroScreenBg,
     val retroScreenBorder: Color = RetroScreenBorder,
     val retroScreenHighlight: Color = RetroHighlight,

@@ -10,6 +10,6 @@ interface OcrService {
     @POST("v1/images:annotate")
     suspend fun annotateImages(
         @Header("X-Goog-Api-Key") apiKey: String,
-        @Body body: OcrRequest
-    ) : OcrResponse
+        @Body body: OcrRequest,
+    ): OcrResponse
 }

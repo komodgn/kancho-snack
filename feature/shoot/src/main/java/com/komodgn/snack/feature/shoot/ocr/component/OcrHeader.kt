@@ -22,23 +22,24 @@ import com.komodgn.snack.feature.shoot.R
 @Composable
 fun OcrHeader(
     modifier: Modifier = Modifier,
-    onBackButtonClick: () -> Unit
+    onBackButtonClick: () -> Unit,
 ) {
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(Black)
-            .height(60.dp),
-        verticalAlignment = Alignment.CenterVertically
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .background(Black)
+                .height(60.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Spacer(modifier = Modifier.width(SnackTheme.spacing.spacing4))
         IconButton(
-            onClick = { onBackButtonClick() }
+            onClick = { onBackButtonClick() },
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_arrow_back),
                 contentDescription = "Arrow Back Icon",
-                tint = ContentOnDark
+                tint = ContentOnDark,
             )
         }
     }
@@ -49,7 +50,7 @@ fun OcrHeader(
 private fun OcrHeader() {
     SnackTheme {
         OcrHeader(
-            onBackButtonClick = {}
+            onBackButtonClick = {},
         )
     }
 }

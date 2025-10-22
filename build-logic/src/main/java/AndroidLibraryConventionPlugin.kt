@@ -3,10 +3,12 @@ import com.komodgn.snack.convention.ExtensionType
 import com.komodgn.snack.convention.Plugins
 import com.komodgn.snack.convention.configureBuildTypes
 import com.komodgn.snack.convention.configureKotlinAndroid
+import com.komodgn.snack.convention.detektPlugins
 import com.komodgn.snack.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 import kotlin.text.toInt
 
 internal class AndroidLibraryConventionPlugin : Plugin<Project> {
@@ -28,6 +30,10 @@ internal class AndroidLibraryConventionPlugin : Plugin<Project> {
                     commonExtension = this,
                     extensionType = ExtensionType.LIBRARY
                 )
+            }
+
+            dependencies {
+                detektPlugins(libs.detekt.formatting)
             }
         }
     }

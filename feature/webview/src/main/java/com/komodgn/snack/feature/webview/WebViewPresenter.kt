@@ -10,24 +10,24 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.components.ActivityRetainedComponent
 
-class WebViewPresenter @AssistedInject constructor(
-    @Assisted private val navigator: Navigator,
-    @Assisted private val screen: WebViewScreen
-) : Presenter<WebViewUiState> {
+class WebViewPresenter
+    @AssistedInject
+    constructor(
+        @Assisted private val navigator: Navigator,
+        @Assisted private val screen: WebViewScreen,
+    ) : Presenter<WebViewUiState> {
+        @Composable
+        override fun present(): WebViewUiState =
+            WebViewUiState(
+                url = screen.url,
+            )
 
-    @Composable
-    override fun present(): WebViewUiState {
-        return WebViewUiState(
-            url = screen.url
-        )
+        @CircuitInject(WebViewScreen::class, ActivityRetainedComponent::class)
+        @AssistedFactory
+        fun interface Factory {
+            fun create(
+                navigator: Navigator,
+                screen: WebViewScreen,
+            ): WebViewPresenter
+        }
     }
-
-    @CircuitInject(WebViewScreen::class, ActivityRetainedComponent::class)
-    @AssistedFactory
-    fun interface Factory {
-        fun create(
-            navigator: Navigator,
-            screen: WebViewScreen
-        ) : WebViewPresenter
-    }
-}

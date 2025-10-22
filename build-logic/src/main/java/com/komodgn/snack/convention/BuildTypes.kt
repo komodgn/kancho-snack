@@ -22,7 +22,6 @@ internal fun Project.configureBuildTypes(
             extensions.configure<ApplicationExtension> {
                 buildTypes {
                     debug { configureDebugBuildType() }
-                    create("staging") { configureStagingBuildType() }
                     release { configureReleaseBuildType(commonExtension, extensionType) }
                 }
             }
@@ -32,7 +31,6 @@ internal fun Project.configureBuildTypes(
             extensions.configure<LibraryExtension> {
                 buildTypes {
                     debug { configureDebugBuildType() }
-                    create("staging") { configureStagingBuildType() }
                     release { configureReleaseBuildType(commonExtension, extensionType) }
                 }
             }
@@ -42,10 +40,6 @@ internal fun Project.configureBuildTypes(
 
 private fun BuildType.configureDebugBuildType() {
     buildConfigField("String", "BASE_URL", "\"DEBUG_API_URL\"")
-}
-
-private fun BuildType.configureStagingBuildType() {
-    buildConfigField("String", "BASE_URL", "\"STAGING_API_URL\"")
 }
 
 private fun BuildType.configureReleaseBuildType(

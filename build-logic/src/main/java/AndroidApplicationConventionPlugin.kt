@@ -3,10 +3,12 @@ import com.komodgn.snack.convention.ExtensionType
 import com.komodgn.snack.convention.Plugins
 import com.komodgn.snack.convention.configureBuildTypes
 import com.komodgn.snack.convention.configureKotlinAndroid
+import com.komodgn.snack.convention.detektPlugins
 import com.komodgn.snack.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 
 internal class AndroidApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -30,6 +32,10 @@ internal class AndroidApplicationConventionPlugin : Plugin<Project> {
                     commonExtension = this,
                     extensionType = ExtensionType.APPLICATION,
                 )
+            }
+
+            dependencies {
+                detektPlugins(libs.detekt.formatting)
             }
         }
     }

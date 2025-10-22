@@ -13,23 +13,25 @@ data class RetroButtonSize(
     val iconSize: Dp,
     val iconSpacing: Dp,
     val textStyle: TextStyle,
-    val contentVerticalOffset: Dp
+    val contentVerticalOffset: Dp,
 )
 
 val mediumRetroButtonSize: RetroButtonSize
-    @Composable get() = RetroButtonSize(
-        totalSize = 90.dp,
-        iconSize = 24.dp,
-        iconSpacing = SnackTheme.spacing.spacing1,
-        textStyle = SnackTheme.typography.bodyMedium,
-        contentVerticalOffset = 4.dp
-    )
+    @Composable get() =
+        RetroButtonSize(
+            totalSize = 90.dp,
+            iconSize = 24.dp,
+            iconSpacing = SnackTheme.spacing.spacing1,
+            textStyle = SnackTheme.typography.bodyMedium,
+            contentVerticalOffset = 4.dp,
+        )
 
 val smallRetroButtonSize: RetroButtonSize
-    @Composable get() = RetroButtonSize(
-        totalSize = 60.dp,
-        iconSize = 18.dp,
-        iconSpacing = SnackTheme.spacing.spacing05,
-        textStyle = SnackTheme.typography.label,
-        contentVerticalOffset = 2.dp
-    )
+    @Composable get() =
+        RetroButtonSize(
+            totalSize = 60.dp,
+            iconSize = 18.dp,
+            iconSpacing = SnackTheme.spacing.spacing05,
+            textStyle = SnackTheme.typography.label,
+            contentVerticalOffset = 2.dp,
+        )

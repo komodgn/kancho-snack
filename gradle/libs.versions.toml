@@ -24,8 +24,8 @@ ksp = "2.2.20-2.0.3"
 kotlin = "2.2.20"
 kotlinxSerializationJson = "1.9.0"
 kotlinDetekt = "1.23.8"
-kotlinKtlintGradle = "11.6.1"
-kotlinKtlintSource = "0.50.0"
+kotlinKtlintGradle = "12.2.0"
+kotlinKtlintSource = "1.7.1"
 
 ## Network
 okhttp = "5.1.0"
@@ -95,6 +95,8 @@ androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-te
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "kotlinDetekt" }
 
 [bundles]
 androidx-compose = [

@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.komodgn.snack.core.designsystem.theme.Neutral800
-import com.komodgn.snack.core.designsystem.theme.White
 
 @Composable
 fun SnackScaffold(

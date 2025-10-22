@@ -24,8 +24,16 @@ val excludeModules: String? by project
 allprojects {
     if (excludeModules?.split(",")?.contains(project.name) != true) {
         apply {
-            plugin(rootProject.libs.plugins.kotlin.detekt.get().pluginId)
-            plugin(rootProject.libs.plugins.kotlin.ktlint.get().pluginId)
+            plugin(
+                rootProject.libs.plugins.kotlin.detekt
+                    .get()
+                    .pluginId,
+            )
+            plugin(
+                rootProject.libs.plugins.kotlin.ktlint
+                    .get()
+                    .pluginId,
+            )
         }
     }
 
@@ -38,7 +46,10 @@ allprojects {
         }
 
         extensions.configure<KtlintExtension> {
-            version.set(rootProject.libs.versions.kotlinKtlintSource.get())
+            version.set(
+                rootProject.libs.versions.kotlinKtlintSource
+                    .get(),
+            )
             android.set(true)
             verbose.set(true)
         }

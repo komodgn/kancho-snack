@@ -31,52 +31,54 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.komodgn.snack.core.ui.component.SnackDialog
-import com.komodgn.snack.feature.shoot.ocr.OcrUiState
 import com.komodgn.snack.feature.shoot.R
 import com.komodgn.snack.feature.shoot.ocr.OcrUiEvent
+import com.komodgn.snack.feature.shoot.ocr.OcrUiState
 import java.io.File
 
 @Composable
 fun CameraPreview(
     modifier: Modifier = Modifier,
-    state: OcrUiState
+    state: OcrUiState,
 ) {
-
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     val permission = android.Manifest.permission.CAMERA
 
     val isGranted by produceState(
         initialValue = ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED,
-        key1 = lifecycleOwner
+        key1 = lifecycleOwner,
     ) {
         value = ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED
 
-        val observer = LifecycleEventObserver { _, event ->
-            if (event == Lifecycle.Event.ON_RESUME) {
-                value = ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED
-                if (value) {
-                    state.eventSink(OcrUiEvent.OnHidePermissionDialog)
-                } else {
-                    state.eventSink(OcrUiEvent.OnShowPermissionDialog)
+        val observer =
+            LifecycleEventObserver { _, event ->
+                if (event == Lifecycle.Event.ON_RESUME) {
+                    value = ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED
+                    if (value) {
+                        state.eventSink(OcrUiEvent.OnHidePermissionDialog)
+                    } else {
+                        state.eventSink(OcrUiEvent.OnShowPermissionDialog)
+                    }
                 }
             }
-        }
         lifecycleOwner.lifecycle.addObserver(observer)
         awaitDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
-    val permissionLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.RequestPermission(),
-    ) { granted ->
-        if (!granted) {
-            state.eventSink(OcrUiEvent.OnShowPermissionDialog)
+    val permissionLauncher =
+        rememberLauncherForActivityResult(
+            contract = ActivityResultContracts.RequestPermission(),
+        ) { granted ->
+            if (!granted) {
+                state.eventSink(OcrUiEvent.OnShowPermissionDialog)
+            }
         }
-    }
 
-    val settingsLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult()
-    ) { }
+    val settingsLauncher =
+        rememberLauncherForActivityResult(
+            contract = ActivityResultContracts.StartActivityForResult(),
+        ) { }
 
     LaunchedEffect(Unit) {
         if (!isGranted) {
@@ -104,26 +106,27 @@ fun CameraPreview(
                     state.eventSink(OcrUiEvent.OnImageCaptured(uri))
                 },
                 onError = { err ->
-                    
-                }
+                },
             )
             state.eventSink(OcrUiEvent.OnCaptureCommandCompleted)
         }
     }
 
     Box(
-        modifier = modifier
-            .fillMaxSize()
+        modifier =
+            modifier
+                .fillMaxSize(),
     ) {
         if (isGranted) {
             AndroidView(
                 modifier = Modifier.fillMaxSize(),
                 factory = { context ->
                     PreviewView(context).apply {
-                        layoutParams = LinearLayout.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                        )
+                        layoutParams =
+                            LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                            )
                         clipToOutline = true
                         implementationMode = PreviewView.ImplementationMode.COMPATIBLE
                         scaleType = PreviewView.ScaleType.FILL_CENTER
@@ -140,11 +143,12 @@ fun CameraPreview(
             description = stringResource(R.string.permission_dialog_description),
             confirmText = stringResource(R.string.permission_dialog_move_to_settings),
             onConfirmClick = {
-                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                    data = Uri.fromParts("package", context.packageName, null)
-                }
+                val intent =
+                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                        data = Uri.fromParts("package", context.packageName, null)
+                    }
                 settingsLauncher.launch(intent)
-            }
+            },
         )
     }
 }
@@ -153,7 +157,7 @@ private fun performCameraCapture(
     context: Context,
     cameraController: LifecycleCameraController,
     onImageCaptured: (Uri) -> Unit,
-    onError: (ImageCaptureException) -> Unit
+    onError: (ImageCaptureException) -> Unit,
 ) {
     val executor = ContextCompat.getMainExecutor(context)
     val photoFile = File.createTempFile("ocr_snack_", ".jpg", context.cacheDir)

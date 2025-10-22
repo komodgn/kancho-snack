@@ -28,24 +28,25 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 @Composable
 fun OcrUi(
     modifier: Modifier = Modifier,
-    state: OcrUiState
+    state: OcrUiState,
 ) {
     SnackScaffold(
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize(),
     ) { innerPadding ->
         Column {
             OcrHeader(
-                modifier = Modifier
-                    .padding(innerPadding),
+                modifier =
+                    Modifier
+                        .padding(innerPadding),
                 onBackButtonClick = {
                     state.eventSink(OcrUiEvent.OnBackClick)
-                }
+                },
             )
             RetroDeviceFrame(
                 topAreaContent = {
                     Text(
                         text = "SNACK",
-                        style = SnackTheme.typography.heading
+                        style = SnackTheme.typography.heading,
                     )
                 },
                 screenContent = {
@@ -53,7 +54,7 @@ fun OcrUi(
                 },
                 buttonAreaContent = {
                     Row(
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
                         SnackButton(
                             onClick = { /* Just Design */ },
@@ -76,13 +77,13 @@ fun OcrUi(
                             backgroundDrawableRes = com.komodgn.snack.core.designsystem.R.drawable.ic_yellow_button,
                         )
                     }
-                }
+                },
             )
 
             Text(
                 text = state.recognizedText.toString(),
                 style = SnackTheme.typography.heading,
-                color = ContentOnDark
+                color = ContentOnDark,
             )
         }
 
@@ -97,10 +98,11 @@ fun OcrUi(
 private fun OcrUiPreview() {
     SnackTheme {
         OcrUi(
-            state = OcrUiState(
-                isCameraPermissionDialogVisible = false,
-                eventSink = {}
-            )
+            state =
+                OcrUiState(
+                    isCameraPermissionDialogVisible = false,
+                    eventSink = {},
+                ),
         )
     }
 }

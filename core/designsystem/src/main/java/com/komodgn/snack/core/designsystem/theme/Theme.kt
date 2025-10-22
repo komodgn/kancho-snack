@@ -5,23 +5,21 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 
-private val LocalBorder = staticCompositionLocalOf { SnackBorder() }
+private val LocalBorder = staticCompositionLocalOf { Border() }
 private val LocalColorSchema = staticCompositionLocalOf { SnackColorSchema() }
-private val LocalRadius = staticCompositionLocalOf { SnackRadius() }
+private val LocalRadius = staticCompositionLocalOf { Radius() }
 private val LocalSpacing = staticCompositionLocalOf { SnackSpacing() }
 private val LocalTypography = staticCompositionLocalOf { RetroTypography() }
 
 @Composable
-fun SnackTheme(
-    content: @Composable () -> Unit
-) {
+fun SnackTheme(content: @Composable () -> Unit) {
     CompositionLocalProvider(
-        content = content
+        content = content,
     )
 }
 
 object SnackTheme {
-    val border: SnackBorder
+    val border: Border
         @Composable
         @ReadOnlyComposable
         get() = LocalBorder.current
@@ -31,7 +29,7 @@ object SnackTheme {
         @ReadOnlyComposable
         get() = LocalColorSchema.current
 
-    val radius: SnackRadius
+    val radius: Radius
         @Composable
         @ReadOnlyComposable
         get() = LocalRadius.current

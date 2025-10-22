@@ -15,7 +15,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun SnackLoadingIndicator(
     modifier: Modifier = Modifier,
-    delayMills: Long = 1000L
+    delayMills: Long = 1000L,
 ) {
     val showLoadingIcon by produceState(initialValue = false, key1 = delayMills) {
         delay(delayMills)
@@ -24,9 +24,10 @@ fun SnackLoadingIndicator(
 
     if (showLoadingIcon) {
         Box(
-            modifier = modifier
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
+            modifier =
+                modifier
+                    .fillMaxSize(),
+            contentAlignment = Alignment.Center,
         ) {
             CircularProgressIndicator(color = SnackTheme.colors.contentPrimary)
         }

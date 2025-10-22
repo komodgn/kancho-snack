@@ -16,8 +16,8 @@ import com.slack.circuit.foundation.Circuit
 import com.slack.circuit.foundation.CircuitCompositionLocals
 import com.slack.circuit.foundation.NavigableCircuitContent
 import com.slack.circuit.foundation.rememberCircuitNavigator
-import tech.thdev.compose.exteions.system.ui.controller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
+import tech.thdev.compose.exteions.system.ui.controller.rememberSystemUiController
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                 systemUiController.setSystemBarsColor(
                     color = Color.Transparent,
                     darkIcons = false,
-                    isNavigationBarContrastEnforced = false
+                    isNavigationBarContrastEnforced = false,
                 )
 
                 onDispose { }
@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
                     NavigableCircuitContent(
                         navigator = navigator,
                         backStack = backStack,
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxSize(),
                     )
                 }
             }

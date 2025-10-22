@@ -73,6 +73,7 @@ naming:
     constantPattern: '[A-Z][A-Za-z0-9_]*'
   FunctionNaming:
     ignoreAnnotated: [ 'Composable' ]
+    functionPattern: '[aA-zZ][A-Za-z\d]*'
   MatchingDeclarationName:
     active: false
   VariableNaming:

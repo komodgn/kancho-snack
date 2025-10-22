@@ -19,20 +19,21 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 @Composable
 fun WebViewUi(
     modifier: Modifier = Modifier,
-    state: WebViewUiState
+    state: WebViewUiState,
 ) {
     SnackScaffold(
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize(),
     ) { innerPadding ->
         @SuppressLint("SetJavaScriptEnabled")
         AndroidView(
             modifier = Modifier.padding(innerPadding),
             factory = { context ->
                 WebView(context).apply {
-                    layoutParams = ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT
-                    )
+                    layoutParams =
+                        ViewGroup.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                        )
                     webViewClient = WebViewClient()
                     settings.apply {
                         javaScriptEnabled = true
@@ -52,8 +53,9 @@ fun WebViewUi(
 @Composable
 private fun WebViewPreview() {
     WebViewUi(
-        state = WebViewUiState(
-            url = "https://sites.google.com/view/snack-privacypolicy"
-        )
+        state =
+            WebViewUiState(
+                url = "https://sites.google.com/view/snack-privacypolicy",
+            ),
     )
 }

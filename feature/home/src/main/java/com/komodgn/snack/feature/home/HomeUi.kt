@@ -27,35 +27,37 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 @Composable
 internal fun HomeUi(
     modifier: Modifier = Modifier,
-    state: HomeUiState
+    state: HomeUiState,
 ) {
     SnackScaffold(
-        modifier = modifier
-            .fillMaxSize()
+        modifier =
+            modifier
+                .fillMaxSize(),
     ) { innerPadding ->
         Column {
             HomeHeader(
-                modifier = Modifier
-                    .padding(innerPadding),
-                state = state
+                modifier =
+                    Modifier
+                        .padding(innerPadding),
+                state = state,
             )
             RetroDeviceFrame(
                 topAreaContent = {
                     Text(
                         text = "SNACK",
-                        style = SnackTheme.typography.heading
+                        style = SnackTheme.typography.heading,
                     )
                 },
                 screenContent = {
                     Text(
                         color = Neutral200,
                         text = "CAMERA PREVIEW",
-                        style = SnackTheme.typography.bodyLarge
+                        style = SnackTheme.typography.bodyLarge,
                     )
                 },
                 buttonAreaContent = {
                     Row(
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
                         SnackButton(
                             onClick = { },
@@ -77,7 +79,7 @@ internal fun HomeUi(
                             backgroundDrawableRes = com.komodgn.snack.core.designsystem.R.drawable.ic_pink_button,
                         )
                     }
-                }
+                },
             )
         }
 
@@ -92,9 +94,10 @@ internal fun HomeUi(
 fun HomeUiPreview() {
     SnackTheme {
         HomeUi(
-            state = HomeUiState(
-                eventSink = {}
-            )
+            state =
+                HomeUiState(
+                    eventSink = {},
+                ),
         )
     }
 }

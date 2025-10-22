@@ -47,27 +47,29 @@ fun SnackButton(
 
     val initialOffset = 0.dp
 
-    val targetOffset = if (isPressed && enabled) {
-        initialOffset + size.contentVerticalOffset
-    } else {
-        initialOffset
-    }
+    val targetOffset =
+        if (isPressed && enabled) {
+            initialOffset + size.contentVerticalOffset
+        } else {
+            initialOffset
+        }
 
     val animatedOffset by animateDpAsState(
         targetValue = targetOffset,
-        label = "ButtonVerticalOffsetAnimation"
+        label = "ButtonVerticalOffsetAnimation",
     )
 
     Box(
-        modifier = modifier
-            .size(size.totalSize)
-            .clickable(
-                interactionSource = interactionSource,
-                indication = null,
-                enabled = enabled,
-                onClick = onClick
-            ),
-        contentAlignment = Alignment.Center
+        modifier =
+            modifier
+                .size(size.totalSize)
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = null,
+                    enabled = enabled,
+                    onClick = onClick,
+                ),
+        contentAlignment = Alignment.Center,
     ) {
         Image(
             painter = painterResource(id = backgroundDrawableRes),
@@ -75,11 +77,12 @@ fun SnackButton(
             modifier = Modifier.fillMaxSize(),
         )
         Column(
-            modifier = Modifier
-                .fillMaxHeight()
-                .offset(y = animatedOffset),
+            modifier =
+                Modifier
+                    .fillMaxHeight()
+                    .offset(y = animatedOffset),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
         ) {
             if (icon != null) {
                 Icon(
@@ -108,13 +111,14 @@ private fun SnackButtonPreview() {
         val dummyBackground = R.drawable.ic_mint_button
 
         Box(
-            modifier = Modifier
-                .width(IntrinsicSize.Max)
-                .padding(SnackTheme.spacing.spacing2)
+            modifier =
+                Modifier
+                    .width(IntrinsicSize.Max)
+                    .padding(SnackTheme.spacing.spacing2),
         ) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(20.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 SnackButton(
                     onClick = { },

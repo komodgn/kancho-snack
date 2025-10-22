@@ -5,7 +5,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Immutable
-data class SnackRadius(
+data class Radius(
     val none: Dp = 0.dp,
     val xs: Dp = 4.dp,
     val s: Dp = 8.dp,
@@ -14,5 +14,5 @@ data class SnackRadius(
     val xl: Dp = 28.dp,
     val xxl: Dp = 32.dp,
     val xxxl: Dp = 48.dp,
-    val full: Dp = 1000.dp
+    val full: Dp = 1000.dp,
 )
