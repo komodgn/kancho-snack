@@ -5,7 +5,7 @@ on:
 
 jobs:
     cd-build:
-    runs-on: ubuntu-latest
+        runs-on: ubuntu-latest
 
     env:
         # Gradle 빌드 성능 설정
