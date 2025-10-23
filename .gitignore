@@ -23,6 +23,8 @@
 *.tar.gz
 *.rar
 
+java.nio.file.FileSystemException
+
 !/gradle/wrapper/gradle-wrapper.jar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
