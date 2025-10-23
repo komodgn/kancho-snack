@@ -2,8 +2,8 @@ name: Android CD
 
 on:
     pull_request:
-        branches: [ main ]
-        types: [ closed ]
+        branches:
+            - main
 
 jobs:
     cd-build:
@@ -27,6 +27,9 @@ jobs:
                 with:
                     distribution: 'corretto'
                     java-version: 21
+
+            -   name: Grant execute permission to gradlew
+                run: chmod +x gradlew
 
             -   name: Generate snack.jks
                 run: echo '${{ secrets.SNACK_JAVA_KEYSTORE }}' | base64 -d > ./snack.jks
