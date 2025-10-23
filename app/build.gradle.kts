@@ -6,6 +6,12 @@ plugins {
 
 android {
     namespace = "com.komodgn.myapplication"
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("${rootProject.rootDir}/keystore.properties")
+        }
+    }
 }
 
 ksp {
