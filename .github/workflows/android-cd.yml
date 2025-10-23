@@ -7,11 +7,7 @@ on:
 
 jobs:
     cd-build:
-        if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
-
-        permissions:
-            contents: write
 
         env:
             # Gradle 빌드 성능 설정
@@ -98,7 +94,6 @@ jobs:
 
             -   name: Create Github Release
                 uses: softprops/action-gh-release@v2
-                if: startsWith(github.ref, 'refs/heads/main')
                 with:
                     tag_name: ${{ steps.extract_version.outputs.version }}
                     release_name: ${{ steps.extract_version.outputs.version }}
