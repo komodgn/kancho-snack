@@ -21,6 +21,7 @@ class OcrRecognizer
     constructor(
         private val ocrService: OcrService,
     ) {
+        @Suppress("TooGenericExceptionCaught")
         suspend fun recognizeText(imageUri: Uri): Result<OcrResponse> =
             withContext(Dispatchers.IO) {
                 try {
@@ -51,7 +52,7 @@ class OcrRecognizer
                 } catch (e: IOException) {
                     e.printStackTrace()
                     Result.failure(e)
-                } catch (e: Exception) {
+                } catch (e: RuntimeException) {
                     e.printStackTrace()
                     Result.failure(e)
                 }

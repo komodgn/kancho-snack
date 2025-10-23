@@ -13,7 +13,6 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 class WebViewPresenter
     @AssistedInject
     constructor(
-        @Assisted private val navigator: Navigator,
         @Assisted private val screen: WebViewScreen,
     ) : Presenter<WebViewUiState> {
         @Composable

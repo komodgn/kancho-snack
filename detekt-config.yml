@@ -28,7 +28,9 @@ formatting:
   MultiLineIfElse:
     active: false
   Indentation:
+    active: false
     indentSize: 4
+    ignoreAnnotated: [ 'Composable' ]
   ParameterListWrapping:
     active: false
   ArgumentListWrapping:
