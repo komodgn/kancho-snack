@@ -1,5 +1,10 @@
 name: Android CD
 
+env:
+    # Gradle 빌드 성능 설정
+    GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false"
+    GRADLE_BUILD_ACTION_CACHE_DEBUG_ENABLED: true
+
 on:
     pull_request:
         branches:
@@ -8,11 +13,6 @@ on:
 jobs:
     cd-build:
         runs-on: ubuntu-latest
-
-        env:
-            # Gradle 빌드 성능 설정
-            GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false"
-            GRADLE_BUILD_ACTION_CACHE_DEBUG_ENABLED: true
 
         steps:
             -   name: Checkout Code
