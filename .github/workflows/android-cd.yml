@@ -1,0 +1,107 @@
+name: Android CD
+
+on:
+    pull_request:
+        branches: [ main ]
+        types: [ closed ]
+
+jobs:
+    cd-build:
+        if: github.event.pull_request.merged == true
+        runs-on: ubuntu-latest
+
+        env:
+            # Gradle 빌드 성능 설정
+            GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false"
+            GRADLE_BUILD_ACTION_CACHE_DEBUG_ENABLED: true
+
+        steps:
+            -   name: Checkout Code
+                uses: actions/checkout@v4
+                with:
+                    # 릴리스 노트 생성을 위해 전체 히스토리 가져오기
+                    fetch-depth: 0
+
+            -   name: Set up JDK 21
+                uses: actions/setup-java@v4
+                with:
+                    distribution: 'corretto'
+                    java-version: 21
+
+            -   name: Generate snack.jks
+                run: echo '${{ secrets.SNACK_JAVA_KEYSTORE }}' | base64 -d > ./snack.jks
+
+            -   name: Generate local.properties
+                run: echo '${{ secrets.LOCAL_PROPERTIES }}' | base64 -d > ./local.properties
+
+            -   name: Generate keystore.properties
+                run: echo '${{ secrets.KEYSTORE_PROPERTIES }}' | base64 -d > ./keystore.properties
+
+            -   name: Generate google-services.json
+                run: echo '${{ secrets.GOOGLE_SERVICES }}' | base64 -d > ./app/google-services.json
+
+            -   name: Extract Version Name from libs.versions.toml
+                run: |
+                    set -euo pipefail
+                    VERSION=$(grep "versionName" gradle/libs.versions.toml | sed -E 's/.*versionName\s*=\s*"([^"]+)".*/\1/')
+                    if [[ -z "$VERSION" ]]; then
+                      echo "Error: Not Found versionName" >&2
+                      exit 1
+                    fi
+                    echo "version=v${VERSION}" >> "$GITHUB_OUTPUT"
+                    echo "Version extracted from toml: v${VERSION}"
+                id: extract_version
+
+            -   name: Generate Firebase Release Note
+                id: firebase_release_note
+                env:
+                    PR_TITLE: ${{ github.event.pull_request.title }}
+                run: |
+                    # 가장 최근 태그 찾기 (현재 버전 이전의 태그)
+                    LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+
+                    NOTES="## 🚀 변경사항: ${PR_TITLE}\n\n"
+
+                    if [ -n "$LATEST_TAG" ]; then
+                        NOTES="${NOTES}### 이전 버전($LATEST_TAG)부터의 변경사항:\n"
+                        # 최근 태그부터 현재까지의 커밋만 가져옴
+                        COMMITS=$(git log --pretty=format:"- %h %s (%an)" ${LATEST_TAG}..HEAD --no-merges)
+                        NOTES="${NOTES}${COMMITS}"
+                    else
+                        NOTES="${NOTES}### 커밋 내역:\n"
+                        # 태그가 없는 경우 최근 10개 커밋만 표시
+                        COMMITS=$(git log --pretty=format:"- %h %s (%an)" --no-merges -n 10)
+                        NOTES="${NOTES}${COMMITS}\n\n(이전 릴리스 태그가 없어 최근 10개 커밋만 표시)"
+                    fi
+
+                    # 환경 변수로 저장
+                    echo "notes<<EOF" >> $GITHUB_OUTPUT
+                    echo -e "$NOTES" >> $GITHUB_OUTPUT
+                    echo "EOF" >> $GITHUB_OUTPUT
+
+            -   name: Build Release AAB
+                run: |
+                    ./gradlew :app:bundleRelease
+
+            -   name: Upload Release Build to Artifacts
+                uses: actions/upload-artifact@v4
+                with:
+                    name: release-artifacts
+                    path: app/build/outputs/bundle/release/
+                    if-no-files-found: error
+
+            -   name: Create Github Release
+                uses: softprops/action-gh-release@v2
+                with:
+                    tag_name: ${{ steps.extract_version.outputs.version }}
+                    release_name: ${{ steps.extract_version.outputs.version }}
+                    generate_release_notes: true
+
+            -   name: Upload artifact to Firebase App Distribution
+                uses: wzieba/Firebase-Distribution-Github-Action@v1
+                with:
+                    appId: ${{secrets.FIREBASE_RELEASE_APP_ID}}
+                    serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+                    groups: internal-testers
+                    file: app/build/outputs/bundle/release/app-release.aab
+                    releaseNotes: ${{ steps.firebase_release_note.outputs.notes }}
