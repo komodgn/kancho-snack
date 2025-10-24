@@ -9,7 +9,7 @@ on:
     pull_request:
 
 jobs:
-    cd-build:
+    ci-build:
         runs-on: ubuntu-latest
 
         steps:
