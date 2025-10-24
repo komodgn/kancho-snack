@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.snack.android.application)
     alias(libs.plugins.snack.android.application.compose)
@@ -9,7 +11,13 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file("${rootProject.rootDir}/keystore.properties")
+            val propertiesFile = rootProject.file("keystore.properties")
+            val properties = Properties()
+            properties.load(propertiesFile.inputStream())
+            storeFile = rootProject.file(properties["storeFile"] as String)
+            keyAlias = properties["keyAlias"] as String
+            keyPassword = properties["keyPassword"] as String
+            storePassword = properties["storePassword"] as String
         }
     }
 }
