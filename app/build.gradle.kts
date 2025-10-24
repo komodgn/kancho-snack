@@ -12,12 +12,6 @@ android {
             storeFile = file("${rootProject.rootDir}/keystore.properties")
         }
     }
-
-    packaging {
-        resources {
-            pickFirsts += "**/a/b.class"
-        }
-    }
 }
 
 ksp {
