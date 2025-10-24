@@ -3,7 +3,7 @@ applicationId = "com.komodgn.snack"
 compileSdk = "36"
 targetSdk = "36"
 minSdk = "24"
-versionCode = "5"
+versionCode = "6"
 versionName = "1.0.4"
 
 agp = "8.13.0"
