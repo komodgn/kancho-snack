@@ -48,7 +48,7 @@ private fun BuildType.configureReleaseBuildType(
 ) {
     buildConfigField("String", "BASE_URL", "\"RELEASE_API_URL\"")
 
-    isMinifyEnabled = true
+    isMinifyEnabled = false
 
     if (extensionType == ExtensionType.APPLICATION) {
         isShrinkResources = true
