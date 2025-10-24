@@ -51,7 +51,7 @@ private fun BuildType.configureReleaseBuildType(
     isMinifyEnabled = false
 
     if (extensionType == ExtensionType.APPLICATION) {
-        isShrinkResources = true
+        isShrinkResources = false
     }
 
     proguardFiles(
