@@ -55,3 +55,7 @@
 
 # R8의 이름 난독화 충돌을 방지: 내부 멤버(필드, 메서드)에 대해서만 난독화 허용
 -keepnames class * { *; }
+
+# 난독화 중단(임시)
+-dontobfuscate
+-dontoptimize
